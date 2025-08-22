@@ -9,25 +9,6 @@ import 'hardhat-tracer'
 import '@nomiclabs/hardhat-etherscan'
 import 'solidity-docgen'
 require('dotenv').config({ path: require('find-config')('.env') })
-const fs = require("fs");
-// const deployer = fs.readFileSync(".secret_testnet").toString().trim();
-// const bscTestnet: NetworkUserConfig = {
-//   url: 'https://rpc.ankr.com/bsc_testnet_chapel',
-//   chainId: 97,
-//   accounts: [process.env.KEY_TESTNET!],
-// }
-
-// const goerli: NetworkUserConfig = {
-//   url: `https://eth-goerli.g.alchemy.com/v2/${process.env.GOERLI_API_KEY}`,
-//   chainId: 5,
-//   // accounts: [process.env.KEY_GOERLI!],
-// }
-
-// const bscMainnet: NetworkUserConfig = {
-//   url: 'https://bsc-dataseed.binance.org/',
-//   chainId: 56,
-//   // accounts: [process.env.KEY_MAINNET!],
-// }
 
 const bscTestnet: NetworkUserConfig = {
   url: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
@@ -84,7 +65,7 @@ const config: HardhatUserConfig = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 10,
+            runs: 200,
           },
         },
       },
@@ -125,28 +106,6 @@ const config: HardhatUserConfig = {
         },
       },
     ],
-    overrides: {
-      '@pancakeswap/v3-core/contracts/libraries/FullMath.sol': {
-        version: '0.7.6',
-        settings: {},
-      },
-      '@pancakeswap/v3-core/contracts/libraries/TickBitmap.sol': {
-        version: '0.7.6',
-        settings: {},
-      },
-      '@pancakeswap/v3-core/contracts/libraries/TickMath.sol': {
-        version: '0.7.6',
-        settings: {},
-      },
-      '@pancakeswap/v3-periphery/contracts/libraries/PoolAddress.sol': {
-        version: '0.7.6',
-        settings: {},
-      },
-      'contracts/libraries/PoolTicksCounter.sol': {
-        version: '0.7.6',
-        settings: {},
-      },
-    },
   },
   paths: {
     sources: './contracts',

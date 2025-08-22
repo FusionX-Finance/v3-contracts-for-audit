@@ -1,0 +1,10 @@
+{
+    "PoolCreationHandler": "0x65692D94d4b2dd2990f475EfF1c07b2E5caAdC04",
+    "poolHelper": "0x33E92442c2D17Cf13a98C25952a997827aEa5E05",
+    "poolHelperUniV2": "0x456E1C55C9b4a55f2b01Ff203a5A576669BbC1Fb",
+    "v2Factory": "0xeFf237Bb973cbe9D7811bfC005fb86911a881F76",
+    "v3Factory": "0xB43D16668F6E84425eC67e14Fd534CF3Cf25eFC3",
+    "deployedAt": "2025-08-21T11:20:08.560Z",
+    "network": "baseCamp",
+    "deployer": "0x73BcbA6ea2E2ddeC914894E964209B84daE8E6DD"
+  }

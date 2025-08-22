@@ -22,21 +22,43 @@ contract FusionXV3PoolDeployer is IFusionXV3PoolDeployer {
     Parameters public override parameters;
 
     address public factoryAddress;
+    address public owner;
 
     /// @notice Emitted when factory address is set
     event SetFactoryAddress(address indexed factory);
+    
+    /// @notice Emitted when owner is changed
+    event OwnerChanged(address indexed previousOwner, address indexed newOwner);
 
     modifier onlyFactory() {
         require(msg.sender == factoryAddress, "only factory can call deploy");
         _;
     }
+    
+    modifier onlyOwner() {
+        require(msg.sender == owner, "only owner");
+        _;
+    }
+    
+    constructor() {
+        owner = msg.sender;
+        emit OwnerChanged(address(0), msg.sender);
+    }
 
-    function setFactoryAddress(address _factoryAddress) external {
+    function setFactoryAddress(address _factoryAddress) external onlyOwner {
         require(factoryAddress == address(0), "already initialized");
 
         factoryAddress = _factoryAddress;
 
         emit SetFactoryAddress(_factoryAddress);
+    }
+    
+    /// @notice Set new owner
+    /// @param _owner The new owner address
+    function setOwner(address _owner) external onlyOwner {
+        require(_owner != address(0), "zero address");
+        emit OwnerChanged(owner, _owner);
+        owner = _owner;
     }
 
     /// @dev Deploys a pool with the given parameters by transiently setting the parameters storage slot and then
